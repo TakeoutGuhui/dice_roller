@@ -1,0 +1,8 @@
+[package]
+name = "dice_roller"
+version = "0.1.0"
+authors = ["TakeoutGuhui"]
+
+[dependencies]
+rand = "0.5"
+regex = "1"
