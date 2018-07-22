@@ -19,10 +19,10 @@ fn main() {
             continue;
         }
 
-        let split: Vec<&str> = line.split("d").collect();
-        let num_rolls: u32 = split[0].parse().unwrap(); 
-        let num_sides: u32 = split[1].parse().unwrap();
-        
+        let split: Vec<u32> = line.split("d").map(|x| x.parse::<u32>().unwrap()).collect();
+
+        let (num_rolls, num_sides) = (split[0], split[1]); 
+
         let rolls: Vec<u32> = (0..num_rolls)
                         .map(|_| rng.gen_range(1, num_sides + 1))
                         .collect();
