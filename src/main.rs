@@ -19,19 +19,15 @@ fn main() {
             continue;
         }
 
-        let split: Vec<u32> = line.split("d").map(|x| x.parse::<u32>().unwrap()).collect();
+        let num_split: Vec<u32> = line.split("d")
+                        .map(|x| x.parse::<u32>().expect("couldn't parse number"))
+                        .collect();
 
-        let (num_rolls, num_sides) = (split[0], split[1]); 
+        let (num_rolls, num_sides) = (num_split[0], num_split[1]); 
 
-        let rolls: Vec<u32> = (0..num_rolls)
+        let dice_rolls: Vec<u32> = (0..num_rolls)
                         .map(|_| rng.gen_range(1, num_sides + 1))
                         .collect();
 
-        println!("{}: {:?}", rolls.iter().sum::<u32>(), rolls);
+        println!("{}: {:?}", dice_rolls.iter().sum::<u32>(), dice_rolls);
     }
-}
-
-//let rolls_as_string: String = rolls.iter()
-//                .map(|roll| roll.to_string())
-//                .collect::<Vec<String>>()
-//                .join(" ");
