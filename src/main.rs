@@ -7,12 +7,12 @@ use regex::Regex;
 
 fn main() {
     let mut rng = thread_rng();
+    let mut line = String::new();
 
     loop {
-        let mut line = String::new();
+        line.clear();
         io::stdin().read_line(&mut line).expect("couldn't read line");
         let line = line.trim();
-
         let re = Regex::new(r"^\d+d\d+$").unwrap();
         if !re.is_match(&line) { 
             println!("not the right format");
@@ -31,3 +31,4 @@ fn main() {
 
         println!("{}: {:?}", dice_rolls.iter().sum::<u32>(), dice_rolls);
     }
+}
